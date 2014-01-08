@@ -224,11 +224,11 @@
 #define RF_RF_SETUP_RF_DR_LOW			0x20
 #define RF_RF_SETUP_PLL_LOCK			0x10
 #define RF_RF_SETUP_RF_DR_HIGH			0x08
-#define RF_RF_SETUP_RF_PWR				0x06
+#define RF_RF_SETUP_RF_PWR			0x06
 #define RF_RF_SETUP_RF_PWR_0_DBM		0x06
-#define RF_RF_SETUP_RF_PWR_NEG_6_DBM 	0x04
-#define RF_RF_SETUP_RF_PWR_NEG_12_DBM	0x02
-#define RF_RF_SETUP_RF_PWR_NEG_18_DBM	0x00
+#define RF_RF_SETUP_RF_PWR_NEG_6_DBM 		0x04
+#define RF_RF_SETUP_RF_PWR_NEG_12_DBM		0x02
+#define RF_RF_SETUP_RF_PWR_NEG_18_DBM		0x00
 //The following can be used in lieu of RF_RF_SETUP_RF_DR_LOW and RF_RF_SETUP_RF_DR_HIGH to set the data rate
 #define RF_RF_SETUP_RF_DR_2_MBPS		RF_RF_SETUP_RF_DR_HIGH
 #define RF_RF_SETUP_RF_DR_1_MBPS		0
@@ -382,6 +382,8 @@ void rf_power_up(bool rx_active_mode);
 void rf_power_up_param(bool rx_active_mode, uint8_t config);
 void rf_power_down();
 void rf_power_down_param(uint8_t config);
+
+void rf_set_output_power(uint8_t);
 
 uint8_t rf_write_register(uint8_t regnumber, uint8_t * dataptr, uint16_t len);
 uint8_t rf_read_register(uint8_t regnumber, uint8_t * dataptr, uint16_t len);
