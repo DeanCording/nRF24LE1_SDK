@@ -45,7 +45,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void pwm_stop(pwm_channel_t pwm_channel)
 {
-	//Set the duty cycle and enable the PWM for the requested channel
+	//Disable the PWM for the requested channel
 	if(pwm_channel == PWM_CHANNEL_0)
 	{
 		reg_bits_clear(PWMCON, PWMCON_PWM0_ENABLE);
