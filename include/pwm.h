@@ -73,6 +73,7 @@ typedef enum
 ////////////////////////////
 void pwm_configure(uint8_t pwm_config_options);
 void pwm_start(pwm_channel_t pwm_channel, uint8_t pwm_duty_cycle);
+void pwm_stop(pwm_channel_t pwm_channel);
 
 
 #endif /* PWM_H_ */
