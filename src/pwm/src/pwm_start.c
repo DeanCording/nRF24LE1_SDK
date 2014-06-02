@@ -34,10 +34,10 @@
 // void pwm_start(pwm_channel_t pwm_channel, uint8_t pwm_duty_cycle)
 //
 // Description:
-//  Starts an ADC conversion on the specified ADC channel
+//  Starts a PWM conversion on the specified PWM channel
 //
 // Parameters:
-//  adc_channel_t adc_channel - ADC channel with which to run the acquisition
+//  pwm_channel_t pwm_channel - PWM channel with which to run the acquisition
 //  uint8_t pwm_duty_cycle - duty cycle at which the PWM should run
 //
 // Return value:
