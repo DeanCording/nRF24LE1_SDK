@@ -138,5 +138,7 @@ uint32_t uart_calc_actual_baud_rate_from_th1(uint8_t th1_reg_value, bool smod_bi
 void uart_send_wait_for_complete(uint8_t tx_data);
 uint8_t uart_wait_for_rx_and_get();
 
+// Allow stdio printf to output to uart
+void putchar(char c);
 
 #endif /*UART_H_*/

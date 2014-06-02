@@ -28,6 +28,7 @@
 
 #include "uart.h"
 #include "timer1.h"
+#include "interrupt.h"
 
 
 ///////////////////////////////////////////
@@ -90,4 +91,8 @@ void uart_configure_manual_baud_calc(uint8_t uart_config_options, uint16_t s0rel
 
 	//Set up SPIMCON0 register from mspi_config_options
 	S0CON = uart_config_options & UART_CONFIG_OPTION_S0CON_MASK;
+
+	// Prepare interrupt flags
+	interrupt_set_uart_tx();  // Pretend last character has been sent.
+	interrupt_clear_uart_rx();
 }

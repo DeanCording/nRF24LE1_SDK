@@ -145,6 +145,7 @@
 // Interrupt-clearing macros
 ///////////////////////////////////////////////////////////////////////////////
 #define interrupt_clear_uart_tx()		sbit_clear(S0CON_SB_TI0)		//Clears UART TX interrupt flag
+#define interrupt_set_uart_tx()			sbit_set(S0CON_SB_TI0)		//Sets UART TX interrupt flag
 #define interrupt_clear_uart_rx()		sbit_clear(S0CON_SB_RI0)		//Clears UART RX interrupt flag
 #define interrupt_clear_rfrdy()			sbit_clear(IRCON_SB_RFRDY)		//Clears RFRDY interrupt flag
 #define interrupt_clear_rfirq()			sbit_clear(IRCON_SB_RFIRQ)		//Clears RFIRQ interrupt flag

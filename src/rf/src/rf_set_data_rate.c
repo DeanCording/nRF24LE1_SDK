@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////
 //
-// File: uart_send_wait_for_complete.c
+// File: rf_set_data_rate.c
 //
-// Copyright S. Brennen Ball, 2011
+// Copyright Dean Cording, 2013
 //
 // The author provides no guarantees, warantees, or promises, implied or
 //  otherwise.  By using this software you agree to indemnify the author
@@ -26,30 +26,33 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 /////////////////////////////////////////////////////////////////////////////
 
-#include "uart.h"
-#include "interrupt.h"
+#include "rf.h"
+#include "rf_src.h"
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// void uart_send_wait_for_complete(uint8_t tx_data)
+// void rf_set_data_rate(uint8_t data_rate)
 //
 // Description:
-//  Sends a byte over the UART and waits for it to complete
+//  Sets the data transmission rate of the device (250kbps, 1Mbps, 2Mbps)
 //
 // Parameters:
-//  uint8_t tx_data - byte to send over the UART
+//  uint8_t power - new power level RF_RF_SETUP_RF_DR_[250_KBPS|1_MBPS|2_MBPS]
 //
 // Return value:
 //  None
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void uart_send_wait_for_complete(uint8_t tx_data)
+void rf_set_data_rate(uint8_t data_rate)
 {
-	interrupt_clear_uart_tx();
-
-        uart_send(tx_data);
-
-	interrupt_wait_for_uart_tx();
-
+  
+  if ((data_rate == RF_RF_SETUP_RF_DR_250_KBPS) ||
+      (data_rate == RF_RF_SETUP_RF_DR_1_MBPS) ||
+      (data_rate == RF_RF_SETUP_RF_DR_2_MBPS)) {
+    
+    uint8_t rf_setup = rf_read_register_1_byte(RF_RF_SETUP) & ~RF_RF_SETUP_RF_DR;
+    rf_setup = (rf_setup & ~RF_RF_SETUP_RF_PWR) | data_rate;
+    rf_write_register(RF_RF_SETUP, &rf_setup, 1);
+  }
 }

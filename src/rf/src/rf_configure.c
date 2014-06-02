@@ -33,7 +33,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // void rf_configure(uint8_t config,
-//				  	 uint8_t opt_rx_active_mode,
+//				  	 bool opt_rx_active_mode,
 //				  	 uint8_t en_aa,
 //				  	 uint8_t en_rxaddr,
 //				  	 uint8_t setup_aw,
@@ -59,7 +59,7 @@
 //
 // Parameters:
 //  uint8_t config - value for CONFIG register
-//  uint8_t opt_rx_active_mode - option to bring up device in active RX mode
+//  bool opt_rx_active_mode - true to bring up device in active RX mode
 //  uint8_t en_aa - value for EN_AA register
 //  uint8_t en_rxaddr - value for EN_RXADDR register
 //  uint8_t setup_aw - value for SETUP_AW register
