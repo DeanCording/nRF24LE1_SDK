@@ -6,7 +6,7 @@ LIB = sdcclib
 # Flags for above programs when calling them from the command line
 DFLAGS = -MM $(INCDIRS) $<
 CFLAGS = --model-large --std-c99 $(INCDIRS) -c $< -o "$(OBJDIR)/"
-LFLAGS = 
+LFLAGS =
 
 # File extensions for dependency files, source files, object files, and library files, respectively
 DEPEXT = d
@@ -26,7 +26,7 @@ endif
 # Target directory
 TARGETDIR = $(TARGETRELTOSUBSRCREL)
 
-# Source dir name, include directories, and sub source dir 
+# Source dir name, include directories, and sub source dir
 NAME := $(shell $(PWD) | $(SED) -e 's_/.*/__' | $(SED) -e 's_\S.*\\__')
 INCDIRS = -I../../include -I$(TARGETDIR)/include $(foreach dir,$(strip $(EXTERNINCDIRS)),-I../$(dir))
 LCLSRCDIR = src

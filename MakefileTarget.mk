@@ -78,7 +78,7 @@ all:
 	sdcclib a $(TARGETLIB) obj/*/*.rel
 	$(ECHO)
 	$(ECHO) "Finished building target '$(TARGETNAME)' for library collection '$(LIBNAME)'"
-	
+
 $(SUBSRCDIRS):
 	$(ECHO)
 	$(ECHO) "Building library '$(@F)'"
