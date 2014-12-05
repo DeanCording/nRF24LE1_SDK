@@ -44,21 +44,21 @@
 // Configuration defines for use in acomp_configure() function...OR these together to form the acomp_config_options argument
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define ACOMP_CONFIG_OPTION_DISABLE					(0)																				//Disable the analog comparator
-#define ACOMP_CONFIG_OPTION_ENABLE					(COMPCON_ENABLE << ADC_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)						//Enable the analog comparator
+#define ACOMP_CONFIG_OPTION_ENABLE					(COMPCON_ENABLE << ACOMP_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)						//Enable the analog comparator
 
 #define ACOMP_CONFIG_OPTION_REF_VDD					(0)																				//Set reference to VDD
-#define ACOMP_CONFIG_OPTION_REF_EXT_ON_AIN3			((ADC_CONFIG_OPTION_REF_SELECT_EXT_AIN3 << ADC_CONFIG_OPTION_ADCCON1_OFFSET_SHIFT) |\
-													 (COMPCON_REF_SEL << ADC_CONFIG_OPTION_COMPCON_OFFSET_SHIFT))					//Set reference to external value on AIN3 or AIN9
-#define ACOMP_CONFIG_OPTION_REF_EXT_ON_AIN9			((ADC_CONFIG_OPTION_REF_SELECT_EXT_AIN9 << ADC_CONFIG_OPTION_ADCCON1_OFFSET_SHIFT) |\
-													 (COMPCON_REF_SEL << ADC_CONFIG_OPTION_COMPCON_OFFSET_SHIFT))					//Set reference to external value on AIN3 or AIN9
+#define ACOMP_CONFIG_OPTION_REF_EXT_ON_AIN3			((ACOMP_CONFIG_OPTION_REF_SELECT_EXT_AIN3 << ACOMP_CONFIG_OPTION_ADCCON1_OFFSET_SHIFT) |\
+													 (COMPCON_REF_SEL << ACOMP_CONFIG_OPTION_COMPCON_OFFSET_SHIFT))					//Set reference to external value on AIN3 or AIN9
+#define ACOMP_CONFIG_OPTION_REF_EXT_ON_AIN9			((ACOMP_CONFIG_OPTION_REF_SELECT_EXT_AIN9 << ACOMP_CONFIG_OPTION_ADCCON1_OFFSET_SHIFT) |\
+													 (COMPCON_REF_SEL << ACOMP_CONFIG_OPTION_COMPCON_OFFSET_SHIFT))					//Set reference to external value on AIN3 or AIN9
 
-#define ACOMP_CONFIG_OPTION_REF_SCALE_25_PCT		((0x00 << COMPCON_REF_SCALE_SHIFT) << ADC_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)	//Set reference scale to 25%
-#define ACOMP_CONFIG_OPTION_REF_SCALE_50_PCT		((0x01 << COMPCON_REF_SCALE_SHIFT) << ADC_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)	//Set reference scale to 50%
-#define ACOMP_CONFIG_OPTION_REF_SCALE_75_PCT		((0x02 << COMPCON_REF_SCALE_SHIFT) << ADC_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)	//Set reference scale to 75%
-#define ACOMP_CONFIG_OPTION_REF_SCALE_100_PCT		((0x03 << COMPCON_REF_SCALE_SHIFT) << ADC_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)	//Set reference scale to 100%
+#define ACOMP_CONFIG_OPTION_REF_SCALE_25_PCT		((0x00 << COMPCON_REF_SCALE_SHIFT) << ACOMP_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)	//Set reference scale to 25%
+#define ACOMP_CONFIG_OPTION_REF_SCALE_50_PCT		((0x01 << COMPCON_REF_SCALE_SHIFT) << ACOMP_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)	//Set reference scale to 50%
+#define ACOMP_CONFIG_OPTION_REF_SCALE_75_PCT		((0x02 << COMPCON_REF_SCALE_SHIFT) << ACOMP_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)	//Set reference scale to 75%
+#define ACOMP_CONFIG_OPTION_REF_SCALE_100_PCT		((0x03 << COMPCON_REF_SCALE_SHIFT) << ACOMP_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)	//Set reference scale to 100%
 
 #define ACOMP_CONFIG_OPTION_POL_NON_INV				(0)																				//Set output polarity to non-inverting
-#define ACOMP_CONFIG_OPTION_POL_INV					(COMPCON_POLARITY << ADC_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)					//Set output polarity to inverting
+#define ACOMP_CONFIG_OPTION_POL_INV					(COMPCON_POLARITY << ACOMP_CONFIG_OPTION_COMPCON_OFFSET_SHIFT)					//Set output polarity to inverting
 
 
 ////////////////////////////
