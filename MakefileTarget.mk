@@ -56,6 +56,7 @@ export TARGETOBJDIRREL = obj
 export TARGETDEPDIRREL = dep
 export TARGETSRCMAKEFILE = $(LOCALSRCRELTOTARGET)/MakefileSrc
 export TARGETRELTOSUBSRCREL = ../../$(TARGETNAME)
+TARGETLIB = $(TARGETLIBDIRREL)/nrf24le1.lib
 
 # Directories inside the local source tree
 SUBSRCDIRSRAW := $(subst /.,,$(strip $(shell $(CD) $(TARGETTOSRCDIRREL) && $(LS) -d */. && $(CD) $(SRCTOTARGETDIRREL))))
@@ -73,6 +74,8 @@ all:
 	$(ECHO)
 	$(ECHO) "Building target '$(TARGETNAME)' for library collection '$(LIBNAME)'"
 	@$(MAKE) $(SUBSRCDIRS)
+	-rm $(TARGETLIB)
+	sdcclib a $(TARGETLIB) obj/*/*.rel
 	$(ECHO)
 	$(ECHO) "Finished building target '$(TARGETNAME)' for library collection '$(LIBNAME)'"
 	
