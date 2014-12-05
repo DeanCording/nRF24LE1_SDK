@@ -52,6 +52,7 @@ build: $(LIBFILE)
 $(LIBDIR)/%.$(LIBEXT): $(OBJFILES)
 	$(ECHO)
 	$(ECHO) "Building library file '$@'"
+	[ -d $(LIBDIR) ] || $(MKDIR) $(LIBDIR) > $(BLACKHOLE)
 	$(LIB) $(LFLAGS) $@ $(OBJFILES)
 	$(ECHO) "Finished building library file '$@'"
 	$(ECHO)
