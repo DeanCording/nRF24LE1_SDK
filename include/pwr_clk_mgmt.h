@@ -327,12 +327,13 @@
 ////////////////////////////
 // Function macros
 ////////////////////////////
-#define pwr_clk_mgmt_enter_pwr_mode_active()					PWRDWN = ((PWRDWN & ~(PWRDWN_PWR_CNTL_MASK)) | PWR_CLK_MGMT_PWRDWN_MODE_ACTIVE)				//Enter active mode
-#define pwr_clk_mgmt_enter_pwr_mode_deep_sleep()				PWRDWN = ((PWRDWN & ~(PWRDWN_PWR_CNTL_MASK)) | PWR_CLK_MGMT_PWRDWN_MODE_DEEP_SLEEP)			//Enter deep sleep mode
-#define pwr_clk_mgmt_enter_pwr_mode_memory_ret_tmr_off()		PWRDWN = ((PWRDWN & ~(PWRDWN_PWR_CNTL_MASK)) | PWR_CLK_MGMT_PWRDWN_MODE_MEMORY_RET_TMR_OFF)	//Enter memory retention timers off mode
-#define pwr_clk_mgmt_enter_pwr_mode_memory_ret_tmr_on()			PWRDWN = ((PWRDWN & ~(PWRDWN_PWR_CNTL_MASK)) | PWR_CLK_MGMT_PWRDWN_MODE_MEMORY_RET_TMR_ON)	//Enter memory retention timers on mode
-#define pwr_clk_mgmt_enter_pwr_mode_register_ret()				PWRDWN = ((PWRDWN & ~(PWRDWN_PWR_CNTL_MASK)) | PWR_CLK_MGMT_PWRDWN_MODE_REGISTER_RET)		//Enter register retention mode
-#define pwr_clk_mgmt_enter_pwr_mode_standby()					PWRDWN = ((PWRDWN & ~(PWRDWN_PWR_CNTL_MASK)) | PWR_CLK_MGMT_PWRDWN_MODE_STANDBY)			//Enter standby mode
+// Entering sleep modes clears the status bits that sits on the same PWRDWN register, no need to try to preserve them
+#define pwr_clk_mgmt_enter_pwr_mode_active()					PWRDWN = PWR_CLK_MGMT_PWRDWN_MODE_ACTIVE				//Enter active mode
+#define pwr_clk_mgmt_enter_pwr_mode_deep_sleep()				PWRDWN = PWR_CLK_MGMT_PWRDWN_MODE_DEEP_SLEEP			//Enter deep sleep mode
+#define pwr_clk_mgmt_enter_pwr_mode_memory_ret_tmr_off()		PWRDWN = PWR_CLK_MGMT_PWRDWN_MODE_MEMORY_RET_TMR_OFF	//Enter memory retention timers off mode
+#define pwr_clk_mgmt_enter_pwr_mode_memory_ret_tmr_on()			PWRDWN = PWR_CLK_MGMT_PWRDWN_MODE_MEMORY_RET_TMR_ON	//Enter memory retention timers on mode
+#define pwr_clk_mgmt_enter_pwr_mode_register_ret()				PWRDWN = PWR_CLK_MGMT_PWRDWN_MODE_REGISTER_RET		//Enter register retention mode
+#define pwr_clk_mgmt_enter_pwr_mode_standby()					PWRDWN = PWR_CLK_MGMT_PWRDWN_MODE_STANDBY			//Enter standby mode
 
 #define pwr_clk_mgmt_is_cclk_src_xosc16m()						((CLKLFCTRL & CLKLFCTRL_IS_CLKLF_SRC_XOSC16M) ? true : false)	//True if CCLK source is XOSC16M, false otherwise
 #define pwr_clk_mgmt_is_cclk_src_rcosc16m()						(!pwr_clk_mgmt_is_clklf_src_xosc16m())							//True if CCLK source is RCOSC16M, false otherwise
