@@ -35,10 +35,14 @@
 ///////////////////////////////////////////
 // Function prototypes
 ///////////////////////////////////////////
-uint16_t watchdog_start_and_set_timeout_in_ms(uint32_t timeout);
+//inline uint16_t watchdog_calc_timeout_from_sec(uint16_t sec);
+//inline uint16_t watchdog_calc_timeout_from_ms(uint32_t msec);
+//inline void watchdog_setup(void);
 void watchdog_set_wdsv_count(uint16_t wdsv_value);
 uint16_t watchdog_get_wdsv_count();
 void watchdog_cause_software_reset();
 
+#include "inline/watchdog_setup.inc"
+#include "inline/watchdog_calc.inc"
 
 #endif /* WATCHDOG_H_ */
