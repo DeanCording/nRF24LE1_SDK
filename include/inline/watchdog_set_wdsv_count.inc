@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
 //
-// File: watchdog_set_wdsv_count.c
+// File: watchdog_set_wdsv_count.inc
 //
 // Copyright S. Brennen Ball, 2011
 //
@@ -26,15 +26,14 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 /////////////////////////////////////////////////////////////////////////////
 
-#include "watchdog.h"
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // void watchdog_set_wdsv_count(uint16_t wdsv_value)
 //
 // Description:
-//  Sets the value of the watchdog counter (WDSV).  The value that is returned by watchdog_start_and_set_timeout_in_ms() can be used as the
-//   argument to this function, since this function takes considerably less time to execute once the watchdog has been set up once.
+//  Sets the value of the watchdog counter (WDSV).  The value that is returned by watchdog_calc_timeout_from_sec() or
+//  watchdog_calc_timeout_from_ms() can be used as the argument to this function, since this function takes considerably less time
+//  to execute once the watchdog has been set up once.
 //
 // Parameters:
 //  uint16_t wdsv_value - Value to assign to WDSV
@@ -43,7 +42,7 @@
 //  None
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void watchdog_set_wdsv_count(uint16_t wdsv_value)
+inline void watchdog_set_wdsv_count(uint16_t wdsv_value)
 {
 	//WDSV is written low byte first, then high byte
 	WDSV = (uint8_t)wdsv_value;
