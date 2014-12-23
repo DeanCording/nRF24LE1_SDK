@@ -61,6 +61,11 @@
 //////////////////////////////////////////////////
 // Function macros for easily setting up the UART
 //////////////////////////////////////////////////
+#define uart_configure_8_n_1_57600()			uart_configure_manual_baud_calc(UART_CONFIG_OPTION_ENABLE_RX | \
+																				UART_CONFIG_OPTION_MODE_1_UART_8_BIT | \
+																				UART_CONFIG_OPTION_CLOCK_FOR_MODES_1_3_USE_BR_GEN | \
+																				UART_CONFIG_OPTION_BIT_SMOD_SET, \
+																				1015)	//Configures the UART for 8-n-1, 57600 baud (assumes a 16 MHz clock)
 #define uart_configure_8_n_1_38400()			uart_configure_manual_baud_calc(UART_CONFIG_OPTION_ENABLE_RX | \
 																				UART_CONFIG_OPTION_MODE_1_UART_8_BIT | \
 																				UART_CONFIG_OPTION_CLOCK_FOR_MODES_1_3_USE_BR_GEN | \
