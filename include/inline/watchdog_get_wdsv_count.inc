@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
 //
-// File: pwr_clk_mgmt_get_cclk_freq_in_hz.c
+// File: watchdog_get_wdsv_count.c
 //
 // Copyright S. Brennen Ball, 2011
 //
@@ -26,33 +26,27 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 /////////////////////////////////////////////////////////////////////////////
 
-#include "pwr_clk_mgmt.h"
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// uint32_t pwr_clk_mgmt_get_cclk_freq_in_hz()
+// uint16_t watchdog_get_wdsv_count(uint16_t wdsv_value)
 //
 // Description:
-//  Returns microcontroller system clock (CCLK) frequency in Hz
+//  Returns the value of the watchdog counter (WDSV).
 //
 // Parameters:
-//  uint8_t cclk_config_options - CCLK configuration options
+//  None
 //
 // Return value:
-//  Microcontroller system clock (CCLK) frequency in Hz (default is 16,000,000 Hz)
+//  The value of the watchdog counter (WDSV).
 //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-uint32_t pwr_clk_mgmt_get_cclk_freq_in_hz()
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+inline uint16_t watchdog_get_wdsv_count()
 {
-	uint8_t divider = (CLKCTRL & CLKCTRL_CLK_FREQ_MASK) >> CLKCTRL_CLK_FREQ_SHIFT;
-	uint8_t i;
-	uint32_t cclk_freq_hz = CCLK_MAX_FREQ_HZ;
+	uint16_t wdsv_value;
 
-	for(i = 0; i < divider; i++)
-	{
-		cclk_freq_hz /= 2;
-	}
+	//WDSV is read low byte first, then high byte
+	wdsv_value = WDSV;
+	wdsv_value += (WDSV << 8);
 
-	return cclk_freq_hz;
+	return wdsv_value;
 }

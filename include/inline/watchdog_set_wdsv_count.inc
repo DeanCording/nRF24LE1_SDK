@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
 //
-// File: pwr_clk_mgmt_get_cclk_freq_in_hz.c
+// File: watchdog_set_wdsv_count.inc
 //
 // Copyright S. Brennen Ball, 2011
 //
@@ -26,33 +26,25 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 /////////////////////////////////////////////////////////////////////////////
 
-#include "pwr_clk_mgmt.h"
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// uint32_t pwr_clk_mgmt_get_cclk_freq_in_hz()
+// void watchdog_set_wdsv_count(uint16_t wdsv_value)
 //
 // Description:
-//  Returns microcontroller system clock (CCLK) frequency in Hz
+//  Sets the value of the watchdog counter (WDSV).  The value that is returned by watchdog_calc_timeout_from_sec() or
+//  watchdog_calc_timeout_from_ms() can be used as the argument to this function, since this function takes considerably less time
+//  to execute once the watchdog has been set up once.
 //
 // Parameters:
-//  uint8_t cclk_config_options - CCLK configuration options
+//  uint16_t wdsv_value - Value to assign to WDSV
 //
 // Return value:
-//  Microcontroller system clock (CCLK) frequency in Hz (default is 16,000,000 Hz)
+//  None
 //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-uint32_t pwr_clk_mgmt_get_cclk_freq_in_hz()
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+inline void watchdog_set_wdsv_count(uint16_t wdsv_value)
 {
-	uint8_t divider = (CLKCTRL & CLKCTRL_CLK_FREQ_MASK) >> CLKCTRL_CLK_FREQ_SHIFT;
-	uint8_t i;
-	uint32_t cclk_freq_hz = CCLK_MAX_FREQ_HZ;
-
-	for(i = 0; i < divider; i++)
-	{
-		cclk_freq_hz /= 2;
-	}
-
-	return cclk_freq_hz;
+	//WDSV is written low byte first, then high byte
+	WDSV = (uint8_t)wdsv_value;
+	WDSV = (uint8_t)(wdsv_value >> 8);
 }
