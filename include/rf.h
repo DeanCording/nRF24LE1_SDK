@@ -47,7 +47,7 @@
 #define RF_FLUSH_RX				0xE2	//Flush RX FIFO command
 #define RF_REUSE_TX_PL			0xE3	//Reuse last TX payload command
 #define RF_R_RX_PL_WID			0x60	//Read RX payload width command
-#define RF_W_ACK_PAYLOAD		0xA1	//Write acknowledge payload command
+#define RF_W_ACK_PAYLOAD		0xA8	//Write acknowledge payload command
 #define RF_W_TX_PAYLOAD_NOACK	0xB0	//Read RX payload width command
 #define RF_NOP					0xFF	//No operation command
 
