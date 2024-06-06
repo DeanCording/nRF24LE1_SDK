@@ -75,7 +75,7 @@ all:
 	$(ECHO) "Building target '$(TARGETNAME)' for library collection '$(LIBNAME)'"
 	@$(MAKE) $(SUBSRCDIRS)
 	-rm $(TARGETLIB)
-	sdcclib a $(TARGETLIB) obj/*/*.rel
+	sdar r $(TARGETLIB) obj/*/*.rel
 	$(ECHO)
 	$(ECHO) "Finished building target '$(TARGETNAME)' for library collection '$(LIBNAME)'"
 

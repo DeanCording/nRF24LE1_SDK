@@ -1,7 +1,7 @@
 # Programs to use for creating dependencies, compiling source files, and creating the library file, respectively
 DEP = sdcc
 CC  = sdcc
-LIB = sdcclib
+LIB = sdar r
 
 # Flags for above programs when calling them from the command line
 DFLAGS = -MM $(INCDIRS) $<
